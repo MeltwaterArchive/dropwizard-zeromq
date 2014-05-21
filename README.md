@@ -84,6 +84,7 @@ public class MyApplication extends Application<MyConfiguration> {
     @Override
     public void run(MyConfiguration configuration, Environment environment) {
         ZContext context = configuration.getZeroMQFactory().build(environment);
+    }
 }
 ```
 

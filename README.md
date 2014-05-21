@@ -128,3 +128,32 @@ socket:
   sendTimeout: 100ms
 ```
 
+If you want to mandate a particular type of socket in your application, make 
+this explicit in the type signature of its configuration:
+
+```java
+public MyConfiguration extends Configuration {
+    
+    // elided: context configuration
+    
+    @NotNull
+    @Valid
+    private ZeroMQPushSocketFactory socket = new ZeroMQPushSocketFactory();
+    //            ^^^^
+
+    @JsonProperty("socket")
+    public ZeroMQPushSocketFactory getSocket() {
+    //           ^^^^
+        return socket;
+    }
+
+    @JsonProperty("socket")
+    public void setSocket(ZeroMQPushSocketFactory socket) {
+    //                          ^^^^
+        this.socket = socket;
+    }
+}
+```
+
+This will make the `type` property invalid, and only sockets of that type will be buildable.
+

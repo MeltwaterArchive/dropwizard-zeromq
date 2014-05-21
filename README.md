@@ -5,7 +5,7 @@ Dropwizard. Both the native [JZMQ](http://github.com/zeromq/jzmq) and the
 pure-Java [JeroMQ](http://github.com/zeromq/jeromq) implementations are 
 supported.
 
-# Dependency
+## Dependency
 
 Add a dependency to your project:
 
@@ -52,7 +52,7 @@ parallel to the mainline ZeroMQ project.
 
 You must include exactly one of the above.
 
-# Usage
+## Usage
 
 To work with a ZeroMQ context in your Dropwizard application, first add the 
 necessary configuration to your applications' `Configuration` class:

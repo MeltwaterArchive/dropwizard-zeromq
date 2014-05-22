@@ -1,4 +1,4 @@
-package com.datasift.dropwizard.zeromq;
+package com.datasift.dropwizard.zeromq.socket;
 
 import io.dropwizard.lifecycle.Managed;
 import org.zeromq.ZMQ;

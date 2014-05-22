@@ -1,6 +1,5 @@
 package com.datasift.dropwizard.zeromq.socket;
 
-import com.datasift.dropwizard.zeromq.ManagedSocket;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Charsets;
 import com.google.common.base.Optional;

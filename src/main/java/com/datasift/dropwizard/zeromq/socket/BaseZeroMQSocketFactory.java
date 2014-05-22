@@ -2,6 +2,7 @@ package com.datasift.dropwizard.zeromq.socket;
 
 import com.datasift.dropwizard.zeromq.ManagedSocket;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableSet;
 import io.dropwizard.setup.Environment;
@@ -15,7 +16,6 @@ import org.zeromq.ZContext;
 import javax.validation.constraints.Min;
 
 import java.net.URI;
-import java.nio.charset.Charset;
 import java.util.Set;
 
 /**
@@ -149,7 +149,7 @@ public abstract class BaseZeroMQSocketFactory implements ZeroMQSocketFactory {
         socket.setRate(maxMulticastRate);
 
         if (identity.isPresent()) {
-            socket.setIdentity(identity.get().getBytes(Charset.forName("US-ASCII")));
+            socket.setIdentity(identity.get().getBytes(Charsets.US_ASCII));
         }
 
         if (maxMessageSize.isPresent()) {

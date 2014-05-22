@@ -22,90 +22,306 @@ import java.util.Set;
  */
 public abstract class BaseZeroMQSocketFactory implements ZeroMQSocketFactory {
 
-    @JsonProperty
     @NotEmpty
     private Set<URI> endpoints = ImmutableSet.of();
 
-    @JsonProperty
     @Min(0)
     private long affinity = 0L;
 
-    @JsonProperty
     @Min(0)
     private long backlog = 100;
 
-    @JsonProperty
     private boolean delayAttachOnConnect = false;
 
-    @JsonProperty
     @Min(0)
     private long highWaterMark = 1000L;
 
-    @JsonProperty
     @Min(0)
     private long receiveHighWaterMark = 1000;
 
-    @JsonProperty
     @Min(0)
     private long sendHighWaterMark = 1000;
 
-    @JsonProperty
     @Length(min = 1, max = 255)
     private Optional<String> identity = Optional.absent();
 
-    @JsonProperty
     private boolean ipv4Only = true;
 
-    @JsonProperty
     @Min(-1)
     private long linger = -1L;
 
-    @JsonProperty
     private Optional<Size> maxMessageSize = Optional.absent();
 
-    @JsonProperty
     @Min(1)
     private long multicastHops = 1L;
 
-    @JsonProperty
     private Duration multicastRecoveryInterval = Duration.seconds(10);
 
-    @JsonProperty
     @Min(1)
     private long maxMulticastRate = 100L;
 
-    @JsonProperty
     private Optional<Size> receiveBufferSize = Optional.absent();
 
-    @JsonProperty
     private Optional<Size> sendBufferSize = Optional.absent();
 
-    @JsonProperty
     private Optional<Duration> receiveTimeout = Optional.absent();
 
-    @JsonProperty
     private Optional<Duration> sendTimeout = Optional.absent();
 
-    @JsonProperty
     private Optional<Duration> initialReconnectInterval = Optional.of(Duration.milliseconds(100));
 
-    @JsonProperty
     private Optional<Duration> maxReconnectInterval = Optional.absent();
 
-    @JsonProperty
     private Optional<Boolean> tcpKeepAlive = Optional.absent();
 
-    @JsonProperty
     @Min(1)
     private Optional<Long> tcpKeepAliveCount = Optional.absent();
 
-    @JsonProperty
     @Min(1)
     private Optional<Long> tcpKeepAliveIdle = Optional.absent();
 
-    @JsonProperty
     @Min(1)
     private Optional<Long> tcpKeepAliveInterval = Optional.absent();
+
+    @JsonProperty
+    public Set<URI> getEndpoints() {
+        return endpoints;
+    }
+
+    @JsonProperty
+    public void setEndpoints(final Set<URI> endpoints) {
+        this.endpoints = endpoints;
+    }
+
+    @JsonProperty
+    public long getAffinity() {
+        return affinity;
+    }
+
+    @JsonProperty
+    public void setAffinity(final long affinity) {
+        this.affinity = affinity;
+    }
+
+    @JsonProperty
+    public long getBacklog() {
+        return backlog;
+    }
+
+    @JsonProperty
+    public void setBacklog(final long backlog) {
+        this.backlog = backlog;
+    }
+
+    @JsonProperty
+    public boolean isDelayAttachOnConnect() {
+        return delayAttachOnConnect;
+    }
+
+    @JsonProperty
+    public void setDelayAttachOnConnect(final boolean delayAttachOnConnect) {
+        this.delayAttachOnConnect = delayAttachOnConnect;
+    }
+
+    @JsonProperty
+    public long getHighWaterMark() {
+        return highWaterMark;
+    }
+
+    @JsonProperty
+    public void setHighWaterMark(final long highWaterMark) {
+        this.highWaterMark = highWaterMark;
+    }
+
+    @JsonProperty
+    public long getReceiveHighWaterMark() {
+        return receiveHighWaterMark;
+    }
+
+    @JsonProperty
+    public void setReceiveHighWaterMark(final long receiveHighWaterMark) {
+        this.receiveHighWaterMark = receiveHighWaterMark;
+    }
+
+    @JsonProperty
+    public long getSendHighWaterMark() {
+        return sendHighWaterMark;
+    }
+
+    @JsonProperty
+    public void setSendHighWaterMark(final long sendHighWaterMark) {
+        this.sendHighWaterMark = sendHighWaterMark;
+    }
+
+    @JsonProperty
+    public Optional<String> getIdentity() {
+        return identity;
+    }
+
+    @JsonProperty
+    public void setIdentity(final Optional<String> identity) {
+        this.identity = identity;
+    }
+
+    @JsonProperty
+    public boolean isIpv4Only() {
+        return ipv4Only;
+    }
+
+    @JsonProperty
+    public void setIpv4Only(final boolean ipv4Only) {
+        this.ipv4Only = ipv4Only;
+    }
+
+    @JsonProperty
+    public long getLinger() {
+        return linger;
+    }
+
+    @JsonProperty
+    public void setLinger(final long linger) {
+        this.linger = linger;
+    }
+
+    @JsonProperty
+    public Optional<Size> getMaxMessageSize() {
+        return maxMessageSize;
+    }
+
+    @JsonProperty
+    public void setMaxMessageSize(final Optional<Size> maxMessageSize) {
+        this.maxMessageSize = maxMessageSize;
+    }
+
+    @JsonProperty
+    public long getMulticastHops() {
+        return multicastHops;
+    }
+
+    @JsonProperty
+    public void setMulticastHops(final long multicastHops) {
+        this.multicastHops = multicastHops;
+    }
+
+    @JsonProperty
+    public Duration getMulticastRecoveryInterval() {
+        return multicastRecoveryInterval;
+    }
+
+    @JsonProperty
+    public void setMulticastRecoveryInterval(final Duration multicastRecoveryInterval) {
+        this.multicastRecoveryInterval = multicastRecoveryInterval;
+    }
+
+    @JsonProperty
+    public long getMaxMulticastRate() {
+        return maxMulticastRate;
+    }
+
+    @JsonProperty
+    public void setMaxMulticastRate(final long maxMulticastRate) {
+        this.maxMulticastRate = maxMulticastRate;
+    }
+
+    @JsonProperty
+    public Optional<Size> getReceiveBufferSize() {
+        return receiveBufferSize;
+    }
+
+    @JsonProperty
+    public void setReceiveBufferSize(final Optional<Size> receiveBufferSize) {
+        this.receiveBufferSize = receiveBufferSize;
+    }
+
+    @JsonProperty
+    public Optional<Size> getSendBufferSize() {
+        return sendBufferSize;
+    }
+
+    @JsonProperty
+    public void setSendBufferSize(final Optional<Size> sendBufferSize) {
+        this.sendBufferSize = sendBufferSize;
+    }
+
+    @JsonProperty
+    public Optional<Duration> getReceiveTimeout() {
+        return receiveTimeout;
+    }
+
+    @JsonProperty
+    public void setReceiveTimeout(final Optional<Duration> receiveTimeout) {
+        this.receiveTimeout = receiveTimeout;
+    }
+
+    @JsonProperty
+    public Optional<Duration> getSendTimeout() {
+        return sendTimeout;
+    }
+
+    @JsonProperty
+    public void setSendTimeout(final Optional<Duration> sendTimeout) {
+        this.sendTimeout = sendTimeout;
+    }
+
+    @JsonProperty
+    public Optional<Duration> getInitialReconnectInterval() {
+        return initialReconnectInterval;
+    }
+
+    @JsonProperty
+    public void setInitialReconnectInterval(final Optional<Duration> initialReconnectInterval) {
+        this.initialReconnectInterval = initialReconnectInterval;
+    }
+
+    @JsonProperty
+    public Optional<Duration> getMaxReconnectInterval() {
+        return maxReconnectInterval;
+    }
+
+    @JsonProperty
+    public void setMaxReconnectInterval(final Optional<Duration> maxReconnectInterval) {
+        this.maxReconnectInterval = maxReconnectInterval;
+    }
+
+    @JsonProperty
+    public Optional<Boolean> getTcpKeepAlive() {
+        return tcpKeepAlive;
+    }
+
+    @JsonProperty
+    public void setTcpKeepAlive(final Optional<Boolean> tcpKeepAlive) {
+        this.tcpKeepAlive = tcpKeepAlive;
+    }
+
+    @JsonProperty
+    public Optional<Long> getTcpKeepAliveCount() {
+        return tcpKeepAliveCount;
+    }
+
+    @JsonProperty
+    public void setTcpKeepAliveCount(final Optional<Long> tcpKeepAliveCount) {
+        this.tcpKeepAliveCount = tcpKeepAliveCount;
+    }
+
+    @JsonProperty
+    public Optional<Long> getTcpKeepAliveIdle() {
+        return tcpKeepAliveIdle;
+    }
+
+    @JsonProperty
+    public void setTcpKeepAliveIdle(final Optional<Long> tcpKeepAliveIdle) {
+        this.tcpKeepAliveIdle = tcpKeepAliveIdle;
+    }
+
+    @JsonProperty
+    public Optional<Long> getTcpKeepAliveInterval() {
+        return tcpKeepAliveInterval;
+    }
+
+    @JsonProperty
+    public void setTcpKeepAliveInterval(final Optional<Long> tcpKeepAliveInterval) {
+        this.tcpKeepAliveInterval = tcpKeepAliveInterval;
+    }
 
     @Override
     public Socket build(final ZContext context, final Environment environment) {

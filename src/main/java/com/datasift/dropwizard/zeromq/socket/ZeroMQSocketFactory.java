@@ -9,4 +9,6 @@ import org.zeromq.ZMQ;
 public interface ZeroMQSocketFactory {
 
     public ZMQ.Socket build(ZContext context, Environment environment);
+    public ZMQ.Socket connect(ZContext context, Environment environment);
+    public ZMQ.Socket bind(ZContext context, Environment environment);
 }

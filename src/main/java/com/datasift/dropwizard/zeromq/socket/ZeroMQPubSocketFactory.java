@@ -10,7 +10,7 @@ import org.zeromq.ZMQ;
  * @see ZeroMQSocketFactory
  */
 @JsonTypeName("pub")
-class ZeroMQPubSocketFactory extends BaseZeroMQSocketFactory {
+public class ZeroMQPubSocketFactory extends BaseZeroMQSocketFactory {
 
     public ZMQ.Socket build(final ZContext context) {
         return build(context, ZMQ.PUB);

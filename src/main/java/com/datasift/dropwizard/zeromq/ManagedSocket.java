@@ -4,7 +4,7 @@ import io.dropwizard.lifecycle.Managed;
 import org.zeromq.ZMQ;
 
 /** TODO: Document */
-public class ManagedSocket implements Managed {
+class ManagedSocket implements Managed {
 
     private final ZMQ.Socket socket;
 

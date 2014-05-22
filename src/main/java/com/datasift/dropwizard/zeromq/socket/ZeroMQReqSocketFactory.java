@@ -10,7 +10,7 @@ import org.zeromq.ZMQ;
  * @see ZeroMQSocketFactory
  */
 @JsonTypeName("req")
-class ZeroMQReqSocketFactory extends BaseZeroMQSocketFactory {
+public class ZeroMQReqSocketFactory extends BaseZeroMQSocketFactory {
 
     public ZMQ.Socket build(final ZContext context) {
         return build(context, ZMQ.REQ);

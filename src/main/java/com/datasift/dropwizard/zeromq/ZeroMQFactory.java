@@ -9,7 +9,7 @@ import javax.validation.constraints.Min;
 /**
  * TODO: Document
  */
-class ZeroMQFactory {
+public class ZeroMQFactory {
 
     @Min(1)
     private int ioThreads = 1;

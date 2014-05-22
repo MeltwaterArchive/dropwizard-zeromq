@@ -11,7 +11,7 @@ import org.zeromq.ZMQ;
  * @see ZeroMQSocketFactory
  */
 @JsonTypeName("router")
-class ZeroMQRouterSocketFactory extends BaseZeroMQSocketFactory {
+public class ZeroMQRouterSocketFactory extends BaseZeroMQSocketFactory {
 
     private boolean mandatory = false;
 

@@ -10,7 +10,7 @@ import org.zeromq.ZMQ;
  * @see ZeroMQSocketFactory
  */
 @JsonTypeName("dealer")
-class ZeroMQDealerSocketFactory extends BaseZeroMQSocketFactory {
+public class ZeroMQDealerSocketFactory extends BaseZeroMQSocketFactory {
 
     public ZMQ.Socket build(final ZContext context) {
         return build(context, ZMQ.DEALER);

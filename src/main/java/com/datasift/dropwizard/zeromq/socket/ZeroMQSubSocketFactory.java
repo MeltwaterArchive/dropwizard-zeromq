@@ -17,7 +17,7 @@ import java.util.List;
  * @see ZeroMQSocketFactory
  */
 @JsonTypeName("sub")
-class ZeroMQSubSocketFactory extends BaseZeroMQSocketFactory {
+public class ZeroMQSubSocketFactory extends BaseZeroMQSocketFactory {
 
     @NotNull
     private List<String> topics = ImmutableList.of();

@@ -10,7 +10,7 @@ import org.zeromq.ZMQ;
  * @see ZeroMQSocketFactory
  */
 @JsonTypeName("pull")
-class ZeroMQPullSocketFactory extends BaseZeroMQSocketFactory {
+public class ZeroMQPullSocketFactory extends BaseZeroMQSocketFactory {
 
     public ZMQ.Socket build(final ZContext context) {
         return build(context, ZMQ.PULL);

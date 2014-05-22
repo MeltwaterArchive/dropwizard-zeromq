@@ -15,12 +15,4 @@ public class ZeroMQPullSocketFactory extends BaseZeroMQSocketFactory {
     public ZMQ.Socket build(final ZContext context) {
         return build(context, ZMQ.PULL);
     }
-
-    public ZMQ.Socket connect(final ZContext context) {
-        return connect(build(context));
-    }
-
-    public ZMQ.Socket bind(final ZContext context) {
-        return bind(build(context));
-    }
 }

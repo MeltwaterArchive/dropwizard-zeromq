@@ -26,20 +26,8 @@ public class ZeroMQRouterSocketFactory extends BaseZeroMQSocketFactory {
     }
 
     public ZMQ.Socket build(final ZContext context) {
-        return build(context, ZMQ.ROUTER);
-    }
-
-    public ZMQ.Socket connect(final ZContext context) {
-        return connect(build(context));
-    }
-
-    public ZMQ.Socket bind(final ZContext context) {
-        return bind(build(context));
-    }
-
-    @Override
-    protected ZMQ.Socket configure(final ZMQ.Socket socket) {
-        super.configure(socket).setRouterMandatory(mandatory);
+        final ZMQ.Socket socket = build(context, ZMQ.ROUTER);
+        socket.setRouterMandatory(isMandatory());
         return socket;
     }
 }

@@ -330,6 +330,14 @@ public abstract class BaseZeroMQSocketFactory implements ZeroMQSocketFactory {
         return socket;
     }
 
+    public Socket connect(final ZContext context, final Environment environment) {
+        return connect(build(context, environment));
+    }
+
+    public Socket bind(final ZContext context, final Environment environment) {
+        return bind(build(context, environment));
+    }
+
     abstract protected Socket build(final ZContext context);
 
     protected Socket build(final ZContext context, final int type) {
@@ -351,74 +359,74 @@ public abstract class BaseZeroMQSocketFactory implements ZeroMQSocketFactory {
     }
 
     protected Socket configure(final Socket socket) {
-        socket.setAffinity(affinity);
-        socket.setBacklog(backlog);
-//        socket.setDelayAttachOnConnect(delayAttachOnConnect);
-        socket.setHWM(highWaterMark);
-        socket.setRcvHWM(receiveHighWaterMark);
-        socket.setSndHWM(sendHighWaterMark);
-        socket.setIPv4Only(ipv4Only);
-        socket.setLinger(linger);
-        socket.setMulticastHops(multicastHops);
-        socket.setRecoveryInterval(multicastRecoveryInterval.toMilliseconds());
-        socket.setRate(maxMulticastRate);
+        socket.setAffinity(getAffinity());
+        socket.setBacklog(getBacklog());
+//        socket.setDelayAttachOnConnect(isDelayAttachOnConnect);
+        socket.setHWM(getHighWaterMark());
+        socket.setRcvHWM(getReceiveHighWaterMark());
+        socket.setSndHWM(getSendHighWaterMark());
+        socket.setIPv4Only(isIpv4Only());
+        socket.setLinger(getLinger());
+        socket.setMulticastHops(getMulticastHops());
+        socket.setRecoveryInterval(getMulticastRecoveryInterval().toMilliseconds());
+        socket.setRate(getMaxMulticastRate());
 
-        if (identity.isPresent()) {
-            socket.setIdentity(identity.get().getBytes(Charsets.US_ASCII));
+        if (getIdentity().isPresent()) {
+            socket.setIdentity(getIdentity().get().getBytes(Charsets.US_ASCII));
         }
 
-        if (maxMessageSize.isPresent()) {
-            socket.setMaxMsgSize(maxMessageSize.get().toBytes());
+        if (getMaxMessageSize().isPresent()) {
+            socket.setMaxMsgSize(getMaxMessageSize().get().toBytes());
         }
 
         socket.setReceiveBufferSize(
-                receiveBufferSize.isPresent()
-                        ? receiveBufferSize.get().toBytes()
+                getReceiveBufferSize().isPresent()
+                        ? getReceiveBufferSize().get().toBytes()
                         : 0);
 
         socket.setSendBufferSize(
-                sendBufferSize.isPresent()
-                        ? sendBufferSize.get().toBytes()
+                getSendBufferSize().isPresent()
+                        ? getSendBufferSize().get().toBytes()
                         : 0);
 
         socket.setReceiveTimeOut(
-                receiveTimeout.isPresent()
-                        ? (int) receiveTimeout.get().toMilliseconds()
+                getReceiveTimeout().isPresent()
+                        ? (int) getReceiveTimeout().get().toMilliseconds()
                         : -1);
 
         socket.setSendTimeOut(
-                sendTimeout.isPresent()
-                        ? (int) sendTimeout.get().toMilliseconds()
+                getSendTimeout().isPresent()
+                        ? (int) getSendTimeout().get().toMilliseconds()
                         : -1);
 
         socket.setReconnectIVL(
-                initialReconnectInterval.isPresent()
-                        ? initialReconnectInterval.get().toMilliseconds()
+                getInitialReconnectInterval().isPresent()
+                        ? getInitialReconnectInterval().get().toMilliseconds()
                         : -1);
 
         socket.setReconnectIVLMax(
-                maxReconnectInterval.isPresent()
-                        ? maxReconnectInterval.get().toMilliseconds()
+                getMaxReconnectInterval().isPresent()
+                        ? getMaxReconnectInterval().get().toMilliseconds()
                         : 0);
 
         socket.setTCPKeepAlive(
-                tcpKeepAlive.isPresent()
-                        ? (tcpKeepAlive.get() ? 1 : 0)
+                getTcpKeepAlive().isPresent()
+                        ? (getTcpKeepAlive().get() ? 1 : 0)
                         : -1);
 
         socket.setTCPKeepAliveCount(
-                tcpKeepAliveCount.isPresent()
-                        ? tcpKeepAliveCount.get()
+                getTcpKeepAliveCount().isPresent()
+                        ? getTcpKeepAliveCount().get()
                         : -1);
 
         socket.setTCPKeepAliveIdle(
-                tcpKeepAliveIdle.isPresent()
-                        ? tcpKeepAliveIdle.get()
+                getTcpKeepAliveIdle().isPresent()
+                        ? getTcpKeepAliveIdle().get()
                         : -1);
 
         socket.setTCPKeepAliveInterval(
-                tcpKeepAliveInterval.isPresent()
-                        ? tcpKeepAliveInterval.get()
+                getTcpKeepAliveInterval().isPresent()
+                        ? getTcpKeepAliveInterval().get()
                         : -1);
 
         return socket;

@@ -33,23 +33,13 @@ public class ZeroMQSubSocketFactory extends BaseZeroMQSocketFactory {
     }
 
     public ZMQ.Socket build(final ZContext context) {
-        return build(context, ZMQ.SUB);
-    }
+        final ZMQ.Socket socket = build(context, ZMQ.SUB);
 
-    public ZMQ.Socket connect(final ZContext context) {
-        return connect(build(context));
-    }
-
-    public ZMQ.Socket bind(final ZContext context) {
-        return bind(build(context));
-    }
-
-    @Override
-    protected ZMQ.Socket configure(final ZMQ.Socket socket) {
-        super.configure(socket);
+        // subscribe to configured topics
         for (final String topic : topics) {
             socket.subscribe(topic.getBytes(Charsets.UTF_8));
         }
+
         return socket;
     }
 }

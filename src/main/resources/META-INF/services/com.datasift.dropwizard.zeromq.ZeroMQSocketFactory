@@ -1,1 +1,9 @@
+com.datasift.dropwizard.zeromq.socket.ZeroMQDealerSocketFactory
+com.datasift.dropwizard.zeromq.socket.ZeroMQPairSocketFactory
+com.datasift.dropwizard.zeromq.socket.ZeroMQPubSocketFactory
+com.datasift.dropwizard.zeromq.socket.ZeroMQPullSocketFactory
 com.datasift.dropwizard.zeromq.socket.ZeroMQPushSocketFactory
+com.datasift.dropwizard.zeromq.socket.ZeroMQRepSocketFactory
+com.datasift.dropwizard.zeromq.socket.ZeroMQReqSocketFactory
+com.datasift.dropwizard.zeromq.socket.ZeroMQRouterSocketFactory
+com.datasift.dropwizard.zeromq.socket.ZeroMQSubSocketFactory

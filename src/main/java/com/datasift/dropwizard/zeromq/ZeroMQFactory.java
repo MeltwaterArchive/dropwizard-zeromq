@@ -24,9 +24,14 @@ public class ZeroMQFactory {
         this.ioThreads = ioThreads;
     }
 
-    public ZContext build(final Environment environment) {
+    public ZContext build() {
         final ZContext context = new ZContext();
         context.setIoThreads(ioThreads);
+        return context;
+    }
+
+    public ZContext build(final Environment environment) {
+        final ZContext context = build();
         environment.lifecycle().manage(new ManagedContext(context));
         return context;
     }

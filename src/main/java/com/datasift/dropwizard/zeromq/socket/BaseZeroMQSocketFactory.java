@@ -330,15 +330,21 @@ public abstract class BaseZeroMQSocketFactory implements ZeroMQSocketFactory {
         return socket;
     }
 
+    public Socket connect(final ZContext context) {
+        return connect(build(context));
+    }
+
     public Socket connect(final ZContext context, final Environment environment) {
         return connect(build(context, environment));
+    }
+
+    public Socket bind(final ZContext context) {
+        return bind(build(context));
     }
 
     public Socket bind(final ZContext context, final Environment environment) {
         return bind(build(context, environment));
     }
-
-    abstract protected Socket build(final ZContext context);
 
     protected Socket build(final ZContext context, final int type) {
         return configure(context.createSocket(type));

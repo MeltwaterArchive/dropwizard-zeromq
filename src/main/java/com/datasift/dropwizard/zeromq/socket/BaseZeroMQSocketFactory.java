@@ -9,9 +9,11 @@ import io.dropwizard.util.Size;
 import io.dropwizard.util.Duration;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.valuehandling.UnwrapValidatedValue;
 import org.zeromq.ZMQ.Socket;
 import org.zeromq.ZContext;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
 import java.net.URI;
@@ -42,7 +44,8 @@ public abstract class BaseZeroMQSocketFactory implements ZeroMQSocketFactory {
     @Min(0)
     private long sendHighWaterMark = 1000;
 
-    @Length(min = 1, max = 255)
+//    @Length(min = 1, max = 255)
+//    @UnwrapValidatedValue
     private Optional<String> identity = Optional.absent();
 
     private boolean ipv4Only = true;
@@ -74,13 +77,16 @@ public abstract class BaseZeroMQSocketFactory implements ZeroMQSocketFactory {
 
     private Optional<Boolean> tcpKeepAlive = Optional.absent();
 
-    @Min(1)
+//    @Min(1)
+//    @UnwrapValidatedValue
     private Optional<Long> tcpKeepAliveCount = Optional.absent();
 
-    @Min(1)
+//    @Min(1)
+//    @UnwrapValidatedValue
     private Optional<Long> tcpKeepAliveIdle = Optional.absent();
 
-    @Min(1)
+//    @Min(1)
+//    @UnwrapValidatedValue
     private Optional<Long> tcpKeepAliveInterval = Optional.absent();
 
     @JsonProperty
@@ -326,7 +332,7 @@ public abstract class BaseZeroMQSocketFactory implements ZeroMQSocketFactory {
     @Override
     public Socket build(final ZContext context, final Environment environment) {
         final Socket socket = build(context);
-        environment.lifecycle().manage(new ManagedSocket(socket));
+        environment.lifecycle().manage(new ManagedSocket(context, socket));
         return socket;
     }
 

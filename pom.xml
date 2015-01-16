@@ -13,7 +13,7 @@
 
     <groupId>com.datasift.dropwizard</groupId>
     <artifactId>dropwizard-zeromq4</artifactId>
-    <version>0.7.1-2-SNAPSHOT</version>
+    <version>0.7.1-2</version>
     <packaging>jar</packaging>
 
     <name>dropwizard-zeromq</name>

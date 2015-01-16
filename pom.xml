@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.datasift.dropwizard</groupId>
-    <artifactId>dropwizard-zeromq</artifactId>
+    <artifactId>dropwizard-zeromq4</artifactId>
     <version>0.7.1-1-SNAPSHOT</version>
     <packaging>jar</packaging>
 

@@ -1,0 +1,15 @@
+{
+  "version": "2",
+  "build_cookbook": {
+    "name": "delivery-scala",
+    "git": "git@github.com:datasift/delivery-scala.git",
+    "branch": "master"
+  },
+  "skip_phases": [],
+  "build_nodes": {},
+  "dependencies": [],
+  "scala": {
+    "is_library": true,
+    "lint_enabled": false
+  }
+}

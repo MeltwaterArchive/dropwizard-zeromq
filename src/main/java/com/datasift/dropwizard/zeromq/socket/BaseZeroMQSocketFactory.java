@@ -371,17 +371,26 @@ public abstract class BaseZeroMQSocketFactory implements ZeroMQSocketFactory {
     }
 
     protected Socket configure(final Socket socket) {
-        socket.setAffinity(getAffinity());
-        socket.setBacklog(getBacklog());
+        if (getAffinity() != 0L) {
+            socket.setAffinity(getAffinity());
+        }
+
 //        socket.setDelayAttachOnConnect(isDelayAttachOnConnect);
         socket.setHWM(getHighWaterMark());
         socket.setRcvHWM(getReceiveHighWaterMark());
         socket.setSndHWM(getSendHighWaterMark());
         socket.setIPv4Only(isIpv4Only());
         socket.setLinger(getLinger());
-        socket.setMulticastHops(getMulticastHops());
-        socket.setRecoveryInterval(getMulticastRecoveryInterval().toMilliseconds());
-        socket.setRate(getMaxMulticastRate());
+
+        try {
+            socket.setBacklog(getBacklog());
+            socket.setMulticastHops(getMulticastHops());
+            socket.setRecoveryInterval(getMulticastRecoveryInterval().toMilliseconds());
+
+            socket.setRate(getMaxMulticastRate());
+        } catch (UnsupportedOperationException e) {
+           // Do not do anything if using JeroMQ, these options are unsupported
+        }
 
         if (getIdentity().isPresent()) {
             socket.setIdentity(getIdentity().get().getBytes(Charsets.US_ASCII));
